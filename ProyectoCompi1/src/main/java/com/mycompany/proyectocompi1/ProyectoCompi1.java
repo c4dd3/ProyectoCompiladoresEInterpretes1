@@ -1,16 +1,33 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- */
-
 package com.mycompany.proyectocompi1;
 
-/**
- *
- * @author danie
- */
-public class ProyectoCompi1 {
+import java.io.FileReader;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
+public class ProyectoCompi1 {
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        // Ruta del archivo de prueba (puede pasarse por args o dejarse fija)
+        String archivo = "src/main/java/com/mycompany/proyectocompi1/test1.abs";
+
+        try (FileReader reader = new FileReader(archivo)) {
+            // Crear scanner con el archivo
+            Scanner scanner = new Scanner(reader);
+
+            // Consumir todo el archivo
+            while (scanner.yylex() != -1) {
+                // yylex() devuelve -1 al llegar al EOF
+                // El TokenCollector ya se encarga de registrar tokens y errores
+            }
+
+            // Al terminar, imprimir resultados
+            TokenCollector.printResults();
+
+        } catch (FileNotFoundException e) {
+            System.err.println("No se encontró el archivo: " + archivo);
+        } catch (IOException e) {
+            System.err.println("Error de entrada/salida: " + e.getMessage());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
