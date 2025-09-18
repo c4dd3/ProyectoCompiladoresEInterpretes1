@@ -13,8 +13,7 @@ BEGIN
    contador := 5.;
 
    mensaje := "Hola Mundo";
-   mensaje := "Hola
-   Mundo";
+   mensaje := Hola Mundo";
    mensaje := "Hola
 
    caracter := 'a' 'a' 'a';
